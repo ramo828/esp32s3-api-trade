@@ -1,4 +1,4 @@
-#include "display_lib.hpp"
+#include "display_lib.h"
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>

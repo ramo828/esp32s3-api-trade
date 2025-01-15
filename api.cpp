@@ -9,7 +9,6 @@ String Api::getCurrencyUrl(char* crypto_currency) {
 }
 // API'den Verileri Çeken Fonksiyon
 String Api::fetchData(String apiUrl) {
-  Serial.println(apiUrl);
   HTTPClient http;
 
   // Wi-Fi bağlantısını kontrol et
