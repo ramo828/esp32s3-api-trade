@@ -49,3 +49,34 @@ String Extra::jsonExtract(String data, String key, int limit_data) {
     return String(doc[key]);
   }
 }
+
+void Extra::memoryInfo() {
+  // RAM bilgileri
+  Serial.println("=== RAM Bilgileri ===");
+  Serial.print("Toplam heap: ");
+  Serial.println(ESP.getHeapSize());  // Toplam RAM
+  Serial.print("Kullanılan heap: ");
+  Serial.println(ESP.getHeapSize() - ESP.getFreeHeap());  // Kullanılan RAM
+  Serial.print("Boş heap: ");
+  Serial.println(ESP.getFreeHeap());  // Boş RAM
+
+  // PSRAM bilgileri (ESP32'de varsa)
+  if (ESP.getPsramSize() > 0) {
+    Serial.println("\n=== PSRAM Bilgileri ===");
+    Serial.print("Toplam PSRAM: ");
+    Serial.println(ESP.getPsramSize());  // Toplam PSRAM
+    Serial.print("Kullanılan PSRAM: ");
+    Serial.println(ESP.getPsramSize() - ESP.getFreePsram());  // Kullanılan PSRAM
+    Serial.print("Boş PSRAM: ");
+    Serial.println(ESP.getFreePsram());  // Boş PSRAM
+  }
+
+  // Flaş hafıza bilgileri
+  Serial.println("\n=== Flaş Hafıza Bilgileri ===");
+  Serial.print("Flaş boyutu: ");
+  Serial.println(ESP.getFlashChipSize());  // Toplam flaş boyutu
+  Serial.print("Kullanılabilir flaş: ");
+  Serial.println(ESP.getFreeSketchSpace());  // Boş flaş alanı
+  Serial.print("Yüklü sketch boyutu: ");
+  Serial.println(ESP.getSketchSize());  // Yüklü programın boyutu
+}

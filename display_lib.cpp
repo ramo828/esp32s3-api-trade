@@ -6,7 +6,6 @@
 #include <vector>
 #include <pgmspace.h>
 
-
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
@@ -67,4 +66,17 @@ void Display::drawBitmap(int x, int y, const uint8_t *bitmap, int w, int h) {
 
 void Display::clear() {
   oled_display.clearDisplay();
+}
+
+void Display::contrast(int light) {
+  oled_display.ssd1306_command(SSD1306_SETCONTRAST);  // Kontrast komutunu gönder
+  oled_display.ssd1306_command(light);                // Kontrast seviyesi (0-255 arasında)
+}
+
+void Display::displayLightSwitch(bool status) {
+  if (status) {
+    oled_display.ssd1306_command(SSD1306_DISPLAYON);
+  } else {
+    oled_display.ssd1306_command(SSD1306_DISPLAYOFF);
+  }
 }

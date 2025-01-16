@@ -9,6 +9,7 @@ public:
   Extra();
   void wifi_setup();
   void beep();
+  void memoryInfo();
   String jsonExtract(String data, String key, int limit_data=9);
 private:
   Display display = Display();
